@@ -1,0 +1,15 @@
+[Unit]
+Description=Back up the website's SQLite database to Cloud Storage
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=legion
+ExecStart=/usr/local/bin/legion-db-backup
+# Hardening: the backup may only write to the database folder and its own private /tmp
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/legion
