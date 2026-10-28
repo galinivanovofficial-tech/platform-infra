@@ -17,3 +17,13 @@ variable "instance_name" {
   description = "Name of the existing web server VM"
   type        = string
 }
+variable "environment" {
+  description = "Deployment environment, used in resource labels"
+  type        = string
+  default     = "production"
+
+  validation {
+    condition     = contains(["production", "staging"], var.environment)
+    error_message = "environment must be either \"production\" or \"staging\"."
+  }
+}

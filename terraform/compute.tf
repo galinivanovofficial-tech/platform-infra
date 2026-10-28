@@ -9,7 +9,7 @@ resource "google_compute_instance" "web" {
   hostname                   = null
   key_revocation_action_type = "NONE"
   labels = {
-    environment = "production"
+    environment = var.environment
     app         = "web"
     managed_by  = "terraform"
   }
