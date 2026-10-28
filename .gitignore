@@ -1,0 +1,8 @@
+# Terraform: local state, plugins and secrets never go to Git
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfvars
+!*.tfvars.example
+crash.log
+.terraform.tfstate.lock.info
