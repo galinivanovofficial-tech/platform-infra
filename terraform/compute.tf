@@ -2,7 +2,7 @@
 resource "google_compute_instance" "web" {
   allow_stopping_for_update  = null
   can_ip_forward             = false
-  deletion_protection        = false
+  deletion_protection        = true
   description                = null
   desired_status             = null
   enable_display             = false
