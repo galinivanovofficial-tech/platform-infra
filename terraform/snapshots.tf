@@ -1,7 +1,5 @@
-# __generated__ by Terraform
-# Please review these resources and move them into your main configuration files.
-
-# __generated__ by Terraform from "projects/project-aee592e9-ccea-48e5-bb0/regions/us-central1/resourcePolicies/default-schedule-1"
+# Daily disk snapshots of the web server: taken at 05:00 UTC, kept 14 days,
+# and kept even if the disk is deleted. Crash-consistent (guest_flush = false).
 resource "google_compute_resource_policy" "snapshots" {
   description = null
   name        = "default-schedule-1"
