@@ -8,7 +8,7 @@ Infrastructure for a production membership web platform (Node.js) running on Goo
 | 2 | Containerised app, image in a registry | planned |
 | 3 | CI/CD: tests, build, deploy, smoke test, rollback | planned |
 | 4 | Monitoring and alerting | planned |
-| 5 | Backups and restore drills | planned |
+| 5 | Backups and restore drills | snapshots in Terraform, first restore drill passed ([runbook](docs/runbook-restore.md)) |
 
 ## Level 1: Infrastructure as Code
 
