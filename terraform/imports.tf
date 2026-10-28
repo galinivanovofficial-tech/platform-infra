@@ -22,8 +22,3 @@ import {
   to = google_compute_firewall.allow_ssh
   id = "projects/${var.project_id}/global/firewalls/default-allow-ssh"
 }
-
-import {
-  to = google_compute_firewall.allow_rdp
-  id = "projects/${var.project_id}/global/firewalls/default-allow-rdp"
-}

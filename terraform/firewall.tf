@@ -42,17 +42,3 @@ resource "google_compute_firewall" "allow_ssh" {
     ports    = ["22"]
   }
 }
-
-resource "google_compute_firewall" "allow_rdp" {
-  name          = "default-allow-rdp"
-  network       = "default"
-  description   = "Allow RDP from anywhere"
-  direction     = "INGRESS"
-  priority      = 65534
-  source_ranges = ["0.0.0.0/0"]
-
-  allow {
-    protocol = "tcp"
-    ports    = ["3389"]
-  }
-}
