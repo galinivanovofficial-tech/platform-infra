@@ -59,7 +59,7 @@ resource "google_compute_instance" "web" {
     subnetwork                  = "https://www.googleapis.com/compute/v1/projects/project-aee592e9-ccea-48e5-bb0/regions/us-central1/subnetworks/default"
     subnetwork_project          = "project-aee592e9-ccea-48e5-bb0"
     access_config {
-      nat_ip                 = "136.71.178.20"
+      nat_ip                 = google_compute_address.web.address
       network_tier           = "PREMIUM"
       public_ptr_domain_name = null
     }
