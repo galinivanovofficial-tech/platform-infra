@@ -19,14 +19,14 @@ resource "google_compute_instance" "web" {
     ssh-keys        = "ubuntu:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDeiGwEr6TivXDGALAIbpUfUCu85sGhxMQlhpSJM8/3E ubuntu"
   }
   metadata_startup_script = null
-  name                    = "ivth-legion"
-  project                 = "project-aee592e9-ccea-48e5-bb0"
+  name                    = var.instance_name
+  project                 = var.project_id
   resource_policies       = []
   tags                    = ["http-server", "https-server"]
-  zone                    = "us-central1-f"
+  zone                    = var.zone
   boot_disk {
     auto_delete                     = true
-    device_name                     = "ivth-legion"
+    device_name                     = var.instance_name
     disk_encryption_key_raw         = null # sensitive
     disk_encryption_key_rsa         = null # sensitive
     disk_encryption_service_account = null
@@ -34,7 +34,7 @@ resource "google_compute_instance" "web" {
     guest_os_features               = ["VIRTIO_SCSI_MULTIQUEUE", "SEV_CAPABLE", "SEV_SNP_CAPABLE", "SEV_LIVE_MIGRATABLE", "SEV_LIVE_MIGRATABLE_V2", "SNP_SVSM_CAPABLE", "IDPF", "TDX_CAPABLE", "UEFI_COMPATIBLE", "GVNIC"]
     interface                       = null
     mode                            = "READ_WRITE"
-    source                          = "https://www.googleapis.com/compute/v1/projects/project-aee592e9-ccea-48e5-bb0/zones/us-central1-f/disks/ivth-legion"
+    source                          = "https://www.googleapis.com/compute/v1/projects/${var.project_id}/zones/${var.zone}/disks/${var.instance_name}"
     initialize_params {
       architecture                = "X86_64"
       enable_confidential_compute = false
@@ -43,7 +43,7 @@ resource "google_compute_instance" "web" {
       provisioned_iops            = 0
       provisioned_throughput      = 0
       resource_manager_tags       = {}
-      resource_policies           = ["https://www.googleapis.com/compute/v1/projects/project-aee592e9-ccea-48e5-bb0/regions/us-central1/resourcePolicies/default-schedule-1"]
+      resource_policies           = ["https://www.googleapis.com/compute/v1/projects/${var.project_id}/regions/${var.region}/resourcePolicies/default-schedule-1"]
       size                        = 30
       storage_pool                = null
       type                        = "pd-standard"
@@ -55,13 +55,13 @@ resource "google_compute_instance" "web" {
   }
   network_interface {
     internal_ipv6_prefix_length = 0
-    network                     = "https://www.googleapis.com/compute/v1/projects/project-aee592e9-ccea-48e5-bb0/global/networks/default"
+    network                     = "https://www.googleapis.com/compute/v1/projects/${var.project_id}/global/networks/default"
     network_ip                  = "10.128.0.2"
     nic_type                    = null
     queue_count                 = 0
     stack_type                  = "IPV4_ONLY"
-    subnetwork                  = "https://www.googleapis.com/compute/v1/projects/project-aee592e9-ccea-48e5-bb0/regions/us-central1/subnetworks/default"
-    subnetwork_project          = "project-aee592e9-ccea-48e5-bb0"
+    subnetwork                  = "https://www.googleapis.com/compute/v1/projects/${var.project_id}/regions/${var.region}/subnetworks/default"
+    subnetwork_project          = var.project_id
     access_config {
       nat_ip                 = google_compute_address.web.address
       network_tier           = "PREMIUM"
