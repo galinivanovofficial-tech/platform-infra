@@ -22,3 +22,7 @@ import {
   to = google_compute_firewall.allow_ssh
   id = "projects/${var.project_id}/global/firewalls/default-allow-ssh"
 }
+import {
+  to = google_compute_resource_policy.snapshots
+  id = "projects/${var.project_id}/regions/${var.region}/resourcePolicies/default-schedule-1"
+}
