@@ -8,8 +8,12 @@ resource "google_compute_instance" "web" {
   enable_display             = false
   hostname                   = null
   key_revocation_action_type = "NONE"
-  labels                     = {}
-  machine_type               = "e2-micro"
+  labels = {
+    environment = "production"
+    app         = "web"
+    managed_by  = "terraform"
+  }
+  machine_type = "e2-micro"
   metadata = {
     enable-osconfig = "TRUE"
     ssh-keys        = "ubuntu:ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDeiGwEr6TivXDGALAIbpUfUCu85sGhxMQlhpSJM8/3E ubuntu"
