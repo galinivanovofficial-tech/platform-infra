@@ -27,3 +27,13 @@ variable "environment" {
     error_message = "environment must be either \"production\" or \"staging\"."
   }
 }
+variable "site_host" {
+  description = "Public hostname of the website"
+  type        = string
+  default     = "ivthlegion-136-71-178-20.sslip.io"
+}
+
+variable "alert_email" {
+  description = "Where alerts are sent (kept in terraform.tfvars, not in Git)"
+  type        = string
+}
