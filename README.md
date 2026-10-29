@@ -5,7 +5,7 @@ Infrastructure for a production membership web platform (Node.js) running on Goo
 | Level | What | Status |
 |---|---|---|
 | 1 | Terraform: the existing VM, firewall and static IP adopted into code, state in GCS | done |
-| 2 | Containerised app, image in a registry | planned |
+| 2 | Containerised app: Docker image in a private Artifact Registry, deployed with a health check and automatic rollback | done |
 | 3 | CI/CD: tests, build, deploy, smoke test, rollback | planned |
 | 4 | Monitoring and alerting: uptime checks from several regions, email alerts for site down, missing backups and high CPU | done |
 | 5 | Backups and restore drills | daily disk snapshots + hourly database backups to Cloud Storage, both restore-tested ([runbook](docs/runbook-restore.md)) |
