@@ -1,4 +1,4 @@
-# Daily disk snapshots of the web server: taken at 05:00 UTC, kept 14 days,
+# Daily disk snapshots of the web server: taken at 05:00 UTC, kept 7 days,
 # and kept even if the disk is deleted. Crash-consistent (guest_flush = false).
 resource "google_compute_resource_policy" "snapshots" {
   description = null
