@@ -41,3 +41,8 @@ variable "billing_account" {
   description = "Billing account ID the budget watches"
   type        = string
 }
+variable "github_repo" {
+  description = "GitHub repository (owner/name) allowed to deploy"
+  type        = string
+  default     = "galinivanovofficial-tech/IVth-Legion-Website"
+}
