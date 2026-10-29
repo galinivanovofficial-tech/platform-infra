@@ -53,3 +53,4 @@ application-level backup brings that down to one hour.
 | Backup frequency | daily | hourly |
 | Max data loss (RPO) | up to 24 hours | up to 1 hour |
 | Consistency | crash-consistent disk snapshot | application-consistent copy, integrity-checked |
+| 4 | Monitoring and alerting | uptime checks from several regions, alerts by email for site down, missing backups and high CPU | done |
