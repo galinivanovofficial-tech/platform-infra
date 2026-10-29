@@ -14,9 +14,16 @@ terraform {
     prefix = "platform-infra"
   }
 }
-
 provider "google" {
   project = var.project_id
   region  = var.region
   zone    = var.zone
+}
+
+# Only for the billing budget: the Budgets API needs a quota project
+provider "google" {
+  alias                 = "billing"
+  project               = var.project_id
+  user_project_override = true
+  billing_project       = var.project_id
 }

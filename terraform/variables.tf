@@ -37,3 +37,7 @@ variable "alert_email" {
   description = "Where alerts are sent (kept in terraform.tfvars, not in Git)"
   type        = string
 }
+variable "billing_account" {
+  description = "Billing account ID the budget watches"
+  type        = string
+}
