@@ -7,7 +7,7 @@ resource "google_compute_resource_policy" "snapshots" {
   region      = var.region
   snapshot_schedule_policy {
     retention_policy {
-      max_retention_days    = 14
+      max_retention_days    = 7
       on_source_disk_delete = "KEEP_AUTO_SNAPSHOTS"
     }
     schedule {
