@@ -13,7 +13,9 @@ TOKEN=$(curl -s -H "Metadata-Flavor: Google" \
   http://metadata.google.internal/computeMetadata/v1/instance/service-accounts/default/token \
   | python3 -c 'import json, sys; print(json.load(sys.stdin)["access_token"])')
 
-LATEST=$(curl -fs -H "Authorization: Bearer $TOKEN" "$API?pageSize=50" | python3 -c '
+# Newest first: the registry holds more than one page of images (each build also
+# stores untagged attestation manifests), so an unsorted first page can miss the newest tag.
+LATEST=$(curl -fs -H "Authorization: Bearer $TOKEN" "$API?pageSize=50&orderBy=update_time%20desc" | python3 -c '
 import json, sys
 images = [i for i in json.load(sys.stdin).get("dockerImages", []) if i.get("tags")]
 print(max(images, key=lambda i: i["updateTime"])["tags"][0] if images else "")')
